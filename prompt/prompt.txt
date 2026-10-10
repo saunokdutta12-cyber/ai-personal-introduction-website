@@ -1,0 +1,17 @@
+Act as a beginner-friendly web development tutor.
+
+Create a professional personal introduction website for a Data Analyst who is learning Generative AI.
+
+Requirements:
+1. Use HTML and CSS.
+2. Include Home, About Me, Skills, Projects, Certifications, and Contact sections.
+3. Use a clean, modern, responsive design.
+4. Include placeholder text that I can personalize.
+5. Add buttons or links to my GitHub and LinkedIn profiles.
+6. Make the website mobile-friendly.
+7. Use semantic HTML and accessible color contrast.
+8. Do not use paid services or unnecessary external libraries.
+9. Explain the purpose of each major section and important HTML elements.
+10. Provide the complete code, instructions to run it locally, and steps to publish it with GitHub Pages.
+
+Keep the solution suitable for a beginner and explain how to customize it.
