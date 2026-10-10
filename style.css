@@ -1,0 +1,559 @@
+/* =========================================================
+   STYLE SHEET – Personal website for a Data Analyst
+   Sections: 1) Colors & fonts  2) Basics  3) Header
+             4) Buttons  5) Hero  6) Sections  7) Skills
+             8) Projects  9) Certifications  10) Footer
+             11) Larger screens  12) Accessibility
+             13) Background and interactive colors (newest)
+   ========================================================= */
+
+
+/* ---------- 1) COLORS & FONTS (change the look here) ----------
+   These are "CSS variables". Change a value once and it updates
+   everywhere. All color pairs below have good contrast (WCAG AA). */
+:root {
+  --color-page:      #eef3f8;  /* page background            */
+  --color-surface:   #ffffff;  /* header, white areas        */
+  --color-alt:       #eaf0f6;  /* alternating section tint   */
+  --color-text:      #1b2430;  /* main text                  */
+  --color-muted:     #46505f;  /* secondary text             */
+  --color-accent:    #0b6b66;  /* teal: buttons and links    */
+  --color-accent-dk: #084f4b;  /* darker teal for hover      */
+  --color-highlight: #f2b84b;  /* amber: decoration only     */
+  --color-border:    #cdd6e1;  /* thin lines                 */
+
+  /* Extra colors used for interactive effects (all pass contrast with white text) */
+  --color-blue:      #2a52a8;
+  --color-green:     #1b6b3a;
+  --color-purple:    #6a3fa0;
+  --color-bronze:    #8a5a00;
+
+  /* System fonts: free, fast, and no downloads needed */
+  --font-body:    system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-heading: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+
+  --radius: 0.5rem;
+}
+
+
+/* ---------- 2) BASICS ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;   /* padding is included in an element's width */
+}
+
+html {
+  scroll-behavior: smooth;  /* gentle scrolling when you click menu links */
+  scroll-padding-top: 5rem; /* stops the sticky header covering section titles */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;     /* about 17px */
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-page);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--color-accent); }
+a:hover { color: var(--color-accent-dk); }
+
+img, svg { max-width: 100%; height: auto; }
+
+/* The centered content column used inside every section */
+.container {
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* A narrower column keeps paragraphs easy to read */
+.narrow { max-width: 46rem; }
+
+
+/* ---------- 3) HEADER & NAVIGATION ---------- */
+.site-header {
+  position: sticky;         /* stays at the top while scrolling */
+  top: 0;
+  z-index: 10;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;          /* on small screens the menu drops below the name */
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: inline-block;
+  padding: 0.35rem 0.1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-list a:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+
+/* ---------- 4) BUTTONS ---------- */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: var(--color-accent-dk);
+  border-color: var(--color-accent-dk);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent);
+}
+.btn-secondary:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+
+/* ---------- 5) HERO (Home) ---------- */
+.hero {
+  padding: 3rem 0 3.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #eef5f5 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-inner {
+  position: relative;       /* keeps the text above the background picture */
+  z-index: 1;
+}
+
+.hero-text { max-width: 40rem; }
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--color-muted);
+  max-width: 38rem;
+}
+
+
+
+/* ---------- 5b) DASHBOARD BACKGROUND PICTURES ----------
+   Two sections show a faded piece of your Excel dashboard behind the text.
+   To change how strong the picture is, edit the opacity values below
+   (0 = invisible, 1 = full strength). Keep them low so text stays readable. */
+.has-bg-charts,
+.has-bg-map {
+  position: relative;
+  isolation: isolate;       /* keeps the picture behind the text */
+  overflow: hidden;
+}
+
+.has-bg-charts::before,
+.has-bg-map::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Charts sit behind the hero, mostly on the right side */
+.has-bg-charts::before {
+  inset: 0;
+  background-image: url("images/hero-bg.svg");
+  background-position: right center;
+  background-size: auto 85%;
+  opacity: 0.35;            /* phones: softer */
+}
+
+/* A white fade on the left keeps the headline easy to read */
+.has-bg-charts::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 35%, rgba(255, 255, 255, 0.55) 70%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* The India map sits behind the contact section, on the right */
+.has-bg-map::before {
+  inset: 0;
+  background-image: url("images/dashboard-map.png");
+  background-position: right 2rem center;
+  background-size: auto 90%;
+  opacity: 0.14;
+}
+
+
+/* ---------- 6) GENERAL SECTIONS ---------- */
+.section { padding: 4rem 0; }
+
+/* Every second section gets a light tint so they feel separate */
+.section-alt { background: var(--color-alt); }
+
+.section-intro {
+  color: var(--color-muted);
+  margin-bottom: 2rem;
+}
+
+
+/* ---------- 7) SKILLS ---------- */
+.skills-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.subheading { margin-top: 2rem; }
+
+.plain-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 0.3rem 0.8rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;     /* fully rounded "pill" shape */
+  font-size: 0.95rem;
+}
+
+.tag-list-small li {
+  padding: 0.15rem 0.65rem;
+  font-size: 0.85rem;
+  background: var(--color-alt);
+}
+
+
+/* ---------- 8) PROJECTS ---------- */
+.project-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.project {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project .tag-list { margin-bottom: 0; }
+
+/* Problem / What I did / Result shown as a label and text pair */
+.project-details { margin: 0 0 1rem; }
+
+.project-details dt {
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+.project-details dd {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--color-muted);
+}
+
+.text-link { font-weight: 600; }
+
+
+/* ---------- 9) CERTIFICATIONS ---------- */
+.cert-list {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cert-list li {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 1rem 1rem;
+  border-left: 4px solid var(--color-accent);
+  margin-bottom: 1rem;
+  background: var(--color-surface);
+}
+
+.cert-list span { color: var(--color-muted); }
+
+
+/* ---------- 10) FOOTER ---------- */
+.site-footer {
+  padding: 1.75rem 0;
+  background: var(--color-text);
+  color: #ffffff;
+  text-align: center;
+}
+.site-footer p { margin: 0; }
+
+
+/* ---------- 11) LARGER SCREENS ----------
+   Everything above is designed for phones first.
+   These rules only apply when the screen is at least 48rem (about 768px) wide. */
+@media (min-width: 48rem) {
+  .hero { padding: 5rem 0; }
+
+  .has-bg-charts::before { opacity: 0.85; background-size: auto 90%; }   /* stronger on larger screens */
+  .has-bg-map::before    { opacity: 0.22; }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section { padding: 5rem 0; }
+}
+
+
+/* ---------- 12) ACCESSIBILITY ---------- */
+
+/* Skip link is hidden until a keyboard user presses Tab */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.6rem 1rem;
+  background: var(--color-text);
+  color: #ffffff;
+  border-radius: var(--radius);
+  z-index: 20;
+}
+.skip-link:focus { top: 1rem; }
+
+/* A clear outline shows where the keyboard is focused */
+a:focus-visible {
+  outline: 3px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+/* Footer and dark areas need a light outline instead */
+.site-footer a:focus-visible { outline-color: #ffffff; }
+
+/* Respect people who turn off animations in their device settings */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+
+/* ---------- 13) BACKGROUND AND INTERACTIVE COLORS ----------
+   This block comes last, so it overrides earlier rules with the same name.
+   Delete the whole block to go back to the previous look. */
+
+/* Page background: soft teal and blue glows plus a faint dot grid */
+body {
+  background-color: var(--color-page);
+  background-image:
+    radial-gradient(circle at 10% 6%,  rgba(11, 107, 102, 0.12), transparent 42%),
+    radial-gradient(circle at 92% 38%, rgba(42, 82, 168, 0.10),  transparent 45%),
+    radial-gradient(rgba(27, 36, 48, 0.09) 1px, transparent 1px);
+  background-size: auto, auto, 24px 24px;
+}
+
+/* Header floats over the page slightly see-through */
+.site-header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+/* Alternate sections become a frosted white band, so the dots still show faintly */
+.section-alt {
+  background: rgba(255, 255, 255, 0.78);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* A short two-color bar under every section title */
+h2::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 4px;
+  margin-top: 0.6rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-blue));
+}
+
+/* Footer: deep navy to teal */
+.site-footer {
+  background: linear-gradient(135deg, #14213d 0%, #0b3d4a 100%);
+}
+
+/* ----- Smooth color changes (the "interactive" part) ----- */
+.nav-list a,
+.btn,
+.tag-list li,
+.skill-group,
+.project,
+.project h3,
+.cert-list li {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease, transform 0.2s ease, background-position 0.3s ease;
+}
+
+/* Menu links: teal text and an amber underline on hover */
+.nav-list a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-highlight);
+}
+
+/* Main button: teal-to-blue gradient that slides on hover */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-blue) 50%, var(--color-accent) 100%);
+  background-size: 200% 100%;
+  background-position: left center;
+  border-color: transparent;
+  box-shadow: 0 2px 6px rgba(11, 107, 102, 0.25);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-blue) 50%, var(--color-accent) 100%);
+  background-size: 200% 100%;
+  background-position: right center;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(42, 82, 168, 0.30);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 8px 20px rgba(11, 107, 102, 0.25);
+}
+
+/* Skill groups: white cards, each with its own color */
+.skill-group {
+  --group: var(--color-accent);
+  padding: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--group);
+  border-radius: var(--radius);
+}
+.skill-group:nth-child(2) { --group: var(--color-blue); }
+.skill-group:nth-child(3) { --group: var(--color-green); }
+.skill-group:nth-child(4) { --group: var(--color-purple); }
+.skill-group:nth-child(5) { --group: var(--color-bronze); }
+
+.skill-group h3 { color: var(--group); }
+
+/* On wide screens, a lone last card stretches across the full row */
+@media (min-width: 48rem) {
+  .skill-group:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+.skill-group:hover {
+  box-shadow: 0 10px 28px rgba(27, 36, 48, 0.12);
+}
+
+/* Skill tags fill with the group color when you hover over them */
+.skill-group .tag-list li {
+  background: #f3f6fa;
+}
+.skill-group .tag-list li:hover {
+  background: var(--group);
+  border-color: var(--group);
+  color: #ffffff;
+}
+
+/* Projects: a colored bar and white highlight appear on hover */
+.project {
+  padding: 1.75rem 1rem 1.75rem 1.25rem;
+  border-left: 4px solid transparent;
+}
+.project:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-left-color: var(--color-accent);
+}
+.project:hover h3 { color: var(--color-accent); }
+
+.project .tag-list-small li:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Certifications: each has its own color bar, and it shifts on hover */
+.cert-list li:nth-child(1) { border-left-color: var(--color-accent); }
+.cert-list li:nth-child(2) { border-left-color: var(--color-blue); }
+.cert-list li:nth-child(3) { border-left-color: var(--color-green); }
+.cert-list li:nth-child(4) { border-left-color: var(--color-purple); }
+
+.cert-list li:hover {
+  border-left-color: var(--color-highlight);
+  box-shadow: 0 8px 22px rgba(27, 36, 48, 0.10);
+}
+
+/* Lift effects only on devices that have a real mouse or trackpad */
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-2px); }
+  .skill-group:hover { transform: translateY(-3px); }
+  .cert-list li:hover { transform: translateX(4px); }
+}
+
+/* Switch off movement and fades for people who ask for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-list a, .btn, .tag-list li, .skill-group, .project, .project h3, .cert-list li {
+    transition: none;
+  }
+  .btn:hover, .skill-group:hover, .cert-list li:hover { transform: none; }
+}
