@@ -56,6 +56,10 @@ ai-personal-introduction-website/
 ├── README.md
 └── screenshots/
     └── homepage.png
+    └── code.png
+    └── github-repository.png
+└── prompt/
+    └── prompt.txt
 ```
 
 *Adjust this structure to match your actual files.*
