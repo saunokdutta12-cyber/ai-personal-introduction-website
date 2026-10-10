@@ -4,7 +4,7 @@ A professional personal introduction website created using HTML and CSS with ass
 
 ## 🌐 Live Demo
 
-**Website:** [[View My Website](https://saunokdutta12-cyber.github.io/ai-personal-introduction-website/)
+**Website:** [View My Website](https://saunokdutta12-cyber.github.io/ai-personal-introduction-website/)
 
 ## 📸 Website Preview
 
